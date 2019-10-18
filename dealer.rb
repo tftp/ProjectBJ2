@@ -1,4 +1,4 @@
-class Diller
+class Dealer
 
   attr_accessor :bank, :cards, :points, :ace
   attr_reader :name
