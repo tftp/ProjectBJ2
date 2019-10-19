@@ -1,5 +1,5 @@
 class Player
-
+  include MethodOperation
   attr_accessor :bank, :cards, :points, :ace
   attr_reader :name
 

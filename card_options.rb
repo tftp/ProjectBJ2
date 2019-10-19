@@ -21,11 +21,8 @@ def create_deck_of_cards
   @cards
 end
 
-def select_card
-  @cards[rand(0..51)]
-end
-
-def mixed_cards
-  @cards.each { |card| card.busy = false }
+def players_test
+  puts "#{@player.name} \n#{@player.cards} \n#{@player.points} \n#{@player.bank}"
+  puts "#{@dealer.name} \n#{@dealer.cards} \n#{@dealer.points} \n#{@dealer.bank}"
 end
 end
