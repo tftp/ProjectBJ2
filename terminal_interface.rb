@@ -7,7 +7,7 @@ class TerminalInterface
   end
 
   def start_game
-    puts "Start game"
+    puts "Игра началась!"
     @game.new_deck
     @game.add_cards_player
     @game.add_cards_dealer
