@@ -26,16 +26,6 @@ def check_end_game?
   true
 end
 
-def choise_of_dealer
-  count_of_cards = @dealer.cards.count
-  return unless @dealer.points < 17 && count_of_cards < 3
-
-  @dealer.add_card(select_card)
-  puts "\nИгрок #{@dealer.name} взял карту."
-  sleep 1
-  @player.points_of_cards SHOW
-  @dealer.points_of_cards HIDE
-end
 
 def open_cards
   @player.points_of_cards SHOW
