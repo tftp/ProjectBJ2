@@ -1,7 +1,6 @@
 class Game
   include CardOptions
   include EndGame
-#  attr_reader :status, :actions
 
   RATE = 50
   SHOW = true

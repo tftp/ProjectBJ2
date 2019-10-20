@@ -15,7 +15,6 @@ class TerminalInterface
       @game.add_cards_dealer
       @game.player_cards
       @game.dealer_cards
-#     @game.players_test
       loop do
         break if @game.action_case(menu_for_player)
       end
