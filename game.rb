@@ -2,7 +2,7 @@ class Game
   include CardOptions
   include EndGame
 
-  RATE = 50
+  RATE = 10
   SHOW = true
   HIDE = false
 
