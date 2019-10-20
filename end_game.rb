@@ -1,11 +1,11 @@
 module EndGame
 
-  def check_end_game?
+  def action_repeat(value)
     if @dealer.bank.zero?
       puts "#{@dealer.name}  не может играть. Его банк = #{@dealer.bank}"
       return true
     end
-    return if @player.points.positive? && repeat_game?
+    return if @player.bank.positive? && value
 
     puts "Твой банк = #{@player.bank}"
     true

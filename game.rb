@@ -1,9 +1,9 @@
 class Game
   include CardOptions
   include EndGame
-  attr_reader :status, :actions
+#  attr_reader :status, :actions
 
-  RATE = -10
+  RATE = 50
   SHOW = true
   HIDE = false
 
@@ -15,7 +15,7 @@ class Game
     @bank = 0
   end
 
-  def actions(value)
+  def action_case(value)
     case value
     when '1'
       choise_of_dealer
@@ -30,14 +30,16 @@ class Game
     end
   end
 
-  def new_deck
+  def in_begining
     @deck = Deck.new(create_deck_of_cards)
+    @player.check
+    @dealer.check
   end
 
   def add_cards_player
     if @player.cards.empty?
-      @bank += 10
-      @player.change_bank(RATE)
+      @bank += RATE
+      @player.bank -= RATE
       2.times {@player.add_card(@deck.cards.delete_at(rand(0..@deck.cards_number)))}
     elsif @player.cards.count < 3
       @player.add_card(@deck.cards.delete_at(rand(0..@deck.cards_number)))
@@ -46,8 +48,8 @@ class Game
 
   def add_cards_dealer
     if @dealer.cards.empty?
-      @bank += 10
-      @dealer.change_bank(RATE)
+      @bank += RATE
+      @dealer.bank -= RATE
       2.times {@dealer.add_card(@deck.cards.delete_at(rand(0..@deck.cards_number)))}
     elsif @dealer.cards.count < 3
       @dealer.add_card(@deck.cards.delete_at(rand(0..@deck.cards_number)))
