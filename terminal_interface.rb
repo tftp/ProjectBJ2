@@ -8,18 +8,22 @@ class TerminalInterface
 
   def start_game
     puts "Игра началась!"
-    processing("\nКарты раздаются")
-    @game.new_deck
-    @game.add_cards_player
-    @game.add_cards_dealer
-    @game.player_cards
-    @game.dealer_cards
-#    @game.players_test
     loop do
-      break if @game.actions(menu_for_player)
+      processing("\nКарты раздаются")
+      @game.in_begining
+      @game.add_cards_player
+      @game.add_cards_dealer
+      @game.player_cards
+      @game.dealer_cards
+#     @game.players_test
+      loop do
+        break if @game.action_case(menu_for_player)
+      end
+      processing("\nПосчет результатов")
+      @game.open_cards
+      break if @game.action_repeat(repeat_game?)
     end
-    processing("\nПосчет результатов")
-    @game.open_cards
+    puts 'Спасибо за игру!'
   end
 
 end
