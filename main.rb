@@ -1,5 +1,6 @@
 require_relative 'card_options'
 require_relative 'methods_operation'
+require_relative 'end_game'
 require_relative 'game'
 require_relative 'player_menu'
 require_relative 'terminal_interface'
