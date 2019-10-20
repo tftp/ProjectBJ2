@@ -2,6 +2,10 @@ class Game
   include CardOptions
   attr_reader :status, :actions
 
+  RATE = -10
+  SHOW = true
+  HIDE = false
+
   def initialize(player,dealer)
     @player = player
     @dealer = dealer
@@ -17,6 +21,7 @@ class Game
   def add_cards_player
     if @player.cards.empty?
       @bank += 10
+      @player.change_bank(RATE)
       2.times {@player.add_card(@deck.cards.delete_at(rand(0..51)))}
     elsif @player.cards.count < 3
       @player.add_card(@deck.cards.delete_at(rand(0..51)))
@@ -26,6 +31,7 @@ class Game
   def add_cards_dealer
     if @dealer.cards.empty?
       @bank += 10
+      @dealer.change_bank(RATE)
       2.times {@dealer.add_card(@deck.cards.delete_at(rand(0..51)))}
     elsif @dealer.cards.count < 3
       @dealer.add_card(@deck.cards.delete_at(rand(0..51)))
@@ -33,17 +39,11 @@ class Game
   end
 
   def player_cards
-    print "\nКарты игрока #{@player.name}: "
-    @player.cards.each { |card| print " #{card.name} " }
-    print "Очков: #{@player.points}  "
-    puts "Банк = #{@player.bank}"
+    @player.points_of_cards(SHOW)
   end
 
   def dealer_cards
-    print "\nКарты игрока #{@dealer.name}: "
-    @dealer.cards.each { |card| print " #{card.name} " }
-    print "Очков: #{@dealer.points}  "
-    puts "Банк = #{@dealer.bank}"
+    @dealer.points_of_cards(HIDE)
   end
 
 end
