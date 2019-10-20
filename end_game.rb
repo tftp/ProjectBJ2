@@ -1,4 +1,5 @@
 module EndGame
+
   def check_end_game?
     if @dealer.bank.zero?
       puts "#{@dealer.name}  не может играть. Его банк = #{@dealer.bank}"
@@ -12,8 +13,8 @@ module EndGame
 
 
   def open_cards
-    @player.points_of_cards SHOW
-    @dealer.points_of_cards SHOW
+    @player.points_of_cards(true)
+    @dealer.points_of_cards(true)
     dealer_win if @player.points > 21 && @dealer.points <= 21
     player_win if @dealer.points > 21 && @player.points <= 21
     game_lose if @dealer.points > 21 && @player.points > 21

@@ -8,6 +8,7 @@ class TerminalInterface
 
   def start_game
     puts "Игра началась!"
+    processing("\nКарты раздаются")
     @game.new_deck
     @game.add_cards_player
     @game.add_cards_dealer
@@ -17,9 +18,8 @@ class TerminalInterface
     loop do
       break if @game.actions(menu_for_player)
     end
-    @game.player_cards
-    @game.dealer_cards
-
+    processing("\nПосчет результатов")
+    @game.open_cards
   end
 
 end
