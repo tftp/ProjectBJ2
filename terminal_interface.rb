@@ -25,7 +25,11 @@ class TerminalInterface
       end
       processing("\nПодсчет результатов")
       @game.open_cards
-      break if @game.action_repeat(repeat_game?)
+      answer = @game.action_repeat(repeat_game?)
+      if answer
+        puts answer
+        break
+      end
     end
     puts 'Спасибо за игру!'
   end

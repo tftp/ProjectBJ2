@@ -1,30 +1,5 @@
 module EndGame
 
-  def action_repeat(value)
-    if @dealer.bank.zero?
-      puts "#{@dealer.name}  не может играть. Его банк = #{@dealer.bank}"
-      return true
-    end
-    return if @player.bank.positive? && value
-
-    puts "Твой банк = #{@player.bank}"
-    true
-  end
-
-
-  def open_cards
-    @player.points_of_cards(true)
-    @dealer.points_of_cards(true)
-    dealer_win if @player.points > 21 && @dealer.points <= 21
-    player_win if @dealer.points > 21 && @player.points <= 21
-    game_lose if @dealer.points > 21 && @player.points > 21
-    return unless @dealer.points <= 21 && @player.points <= 21
-
-    dealer_win if @dealer.points > @player.points
-    player_win if @dealer.points < @player.points
-    game_tie if @dealer.points == @player.points
-  end
-
   def dealer_win
     puts "\nПобедил #{@dealer.name}"
     sleep 1

@@ -2,7 +2,7 @@ class Game
   include CardOptions
   include EndGame
 
-  RATE = 10
+  RATE = 50
   SHOW = true
   HIDE = false
 
@@ -71,6 +71,28 @@ class Game
     else
       "\nИгрок #{@dealer.name} не взял карту."
     end
+  end
+
+  def action_repeat(value)
+    if @dealer.bank.zero?
+      return "#{@dealer.name}  не может играть. Его банк = #{@dealer.bank}"
+    end
+    return if @player.bank.positive? && value
+
+      return "Твой банк = #{@player.bank}"
+  end
+
+  def open_cards
+    @player.points_of_cards(true)
+    @dealer.points_of_cards(true)
+    return dealer_win if @player.points > 21 && @dealer.points <= 21
+    return player_win if @dealer.points > 21 && @player.points <= 21
+    return game_lose if @dealer.points > 21 && @player.points > 21
+    return unless @dealer.points <= 21 && @player.points <= 21
+
+    return dealer_win if @dealer.points > @player.points
+    return player_win if @dealer.points < @player.points
+    return game_tie if @dealer.points == @player.points
   end
 
 end
