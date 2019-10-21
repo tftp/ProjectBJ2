@@ -67,9 +67,9 @@ class Game
     count_of_cards = @dealer.cards.count
     if @dealer.points < 17 && count_of_cards < 3
       add_cards_dealer
-      puts "\nИгрок #{@dealer.name} взял карту."
+      "\nИгрок #{@dealer.name} взял карту."
     else
-      puts "\nИгрок #{@dealer.name} не взял карту."
+      "\nИгрок #{@dealer.name} не взял карту."
     end
   end
 

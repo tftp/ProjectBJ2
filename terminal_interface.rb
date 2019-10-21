@@ -16,9 +16,14 @@ class TerminalInterface
       @game.player_cards
       @game.dealer_cards
       loop do
-        break if @game.action_case(menu_for_player)
+        if @game.action_case(menu_for_player)
+          puts @game.choise_of_dealer
+          break
+        else
+          puts @game.choise_of_dealer
+        end
       end
-      processing("\nПосчет результатов")
+      processing("\nПодсчет результатов")
       @game.open_cards
       break if @game.action_repeat(repeat_game?)
     end
