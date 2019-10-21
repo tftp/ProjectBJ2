@@ -24,7 +24,12 @@ class TerminalInterface
         end
       end
       processing("\nПодсчет результатов")
-      @game.open_cards
+      result = @game.open_cards
+      puts result[0]
+      sleep 1
+      puts result[1]
+      puts result[2]
+      sleep 1
       answer = @game.action_repeat(repeat_game?)
       if answer
         puts answer

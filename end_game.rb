@@ -1,38 +1,34 @@
 module EndGame
 
   def dealer_win
-    puts "\nПобедил #{@dealer.name}"
-    sleep 1
-    puts "\nБанк игрока #{@player.name} = #{@player.bank}"
-    puts "Банк игрока #{@dealer.name} = #{@dealer.bank += @bank}"
+    header =  "\nПобедил #{@dealer.name}"
+    bank_player = "\nБанк игрока #{@player.name} = #{@player.bank}"
+    bank_dealer = "Банк игрока #{@dealer.name} = #{@dealer.bank += @bank}"
     @bank = 0
-    sleep 1
+    [header, bank_player, bank_dealer]
   end
 
   def player_win
-    puts "\nПобедил #{@player.name}"
-    sleep 1
-    puts "\nБанк игрока #{@player.name} = #{@player.bank += @bank}"
-    puts "Банк игрока #{@dealer.name} = #{@dealer.bank}"
+    header =  "\nПобедил #{@player.name}"
+    bank_player = "\nБанк игрока #{@player.name} = #{@player.bank += @bank}"
+    bank_dealer = "Банк игрока #{@dealer.name} = #{@dealer.bank}"
     @bank = 0
-    sleep 1
+    [header, bank_player, bank_dealer]
   end
 
   def game_lose
-    puts "\nОба игрока проиграли!"
-    sleep 1
-    puts "\nБанк игрока #{@player.name} = #{@player.bank}"
-    puts "Банк игрока #{@dealer.name} = #{@dealer.bank}"
+    header =  "\nОба игрока проиграли!"
+    bank_player = "\nБанк игрока #{@player.name} = #{@player.bank}"
+    bank_dealer = "Банк игрока #{@dealer.name} = #{@dealer.bank}"
     @bank = 0
-    sleep 1
+    [header, bank_player, bank_dealer]
   end
 
   def game_tie
-    puts "\nНичья!"
-    sleep 1
-    puts "\nБанк игрока #{@player.name} = #{@player.bank += @bank / 2}"
-    puts "Банк игрока #{@dealer.name} = #{@dealer.bank += @bank / 2}"
+    header =  "\nНичья!"
+    bank_player = "\nБанк игрока #{@player.name} = #{@player.bank += @bank / 2}"
+    bank_dealer = "Банк игрока #{@dealer.name} = #{@dealer.bank += @bank / 2}"
     @bank = 0
-    sleep 1
+    [header, bank_player, bank_dealer]
   end
 end
